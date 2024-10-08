@@ -24,7 +24,7 @@ module.exports = {
         const d = event.messageReply.attachments[0];
         if (d.type === "audio" || d.type === "video") {
           const e = await shortenURL(d.url);
-          const f = await axios.get(`https://audio-recon-ahcw.onrender.com/kshitiz?url=${encodeURIComponent(e)}`);
+          const f = await axios.get(`https://deku-rest-apis.ooguy.com/spotify?q=${encodeURIComponent(e)}`);
           return f.data.title;
         } else {
           throw new Error("Invalid attachment type.");
@@ -39,14 +39,14 @@ module.exports = {
         b = args.join(" ");
       }
 
-      const g = await axios.get(`https://spotify-play-iota.vercel.app/spotify?query=${encodeURIComponent(b)}`);
+      const g = await axios.get(`https://deku-rest-apis.ooguy.com/spotify?q=${encodeURIComponent(b)}`);
       const h = g.data.trackURLs;
       if (!h || h.length === 0) {
         throw new Error("No track found for the provided song name.");
       }
 
       const i = h[0];
-      const j = await axios.get(`https://sp-dl-bice.vercel.app/spotify?id=${encodeURIComponent(i)}`);
+      const j = await axios.get(`https://deku-rest-apis.ooguy.com/spotify?q=${encodeURIComponent(i)}`);
       const k = j.data.download_link;
 
       const l = await downloadTrack(k);
